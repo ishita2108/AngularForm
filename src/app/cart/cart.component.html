@@ -1,0 +1,99 @@
+
+<div class="container">
+    <h2> Cart</h2>
+
+    <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+      <div>
+        <label for="firstName">First Name<span class="required-asterisk">*</span>:</label>
+        <input id="firstName" formControlName="firstName" />
+        <div *ngIf="myForm.get('firstName')?.invalid && myForm.get('firstName')?.touched" class="error-message">
+          <div *ngIf="myForm.get('firstName')?.errors?.['required']" class="error">First Name is required.</div>
+          <div *ngIf="myForm.get('firstName')?.errors?.['pattern']" class="error">First Name must be at least 3 characters long and only have alphabets.</div>
+        </div>
+      </div>
+      <br>
+
+      <div>
+        <label for="MiddleName">Middle Name:</label>
+        <input id="MiddleName" formControlName="middleName" />
+        <div *ngIf="myForm.get('middleName')?.invalid && myForm.get('middleName')?.touched" class="error-message">
+          <div *ngIf="myForm.get('middleName')?.errors?.['pattern']" class="error">Middle Name must be at least 3 characters long and only have alphabets.</div>
+        </div>
+      </div>
+      <br>
+
+       <div>
+        <label for="lastName">Last Name<span class="required-asterisk">*</span>:</label>
+        <input id="lastName" formControlName="lastName" />
+        <div *ngIf="myForm.get('lastName')?.invalid && myForm.get('lastName')?.touched" class="error-message">
+          <div *ngIf="myForm.get('lastName')?.errors?.['required']" class="error">Last Name is required.</div>
+          <div *ngIf="myForm.get('lastName')?.errors?.['minlength']" class="error">Last Name must be at least 3 characters long and only have alphabets.</div>
+        </div>
+      </div>
+
+      <br>
+
+      <div>
+        <label for="address">Address<span class="required-asterisk">*</span>:</label>
+        <input id="address" formControlName="address" />
+        <div *ngIf="myForm.get('address')?.invalid && myForm.get('address')?.touched" class="error-message">
+          <div *ngIf="myForm.get('address')?.errors?.['required']" class="error">Address is required.</div>
+          <div *ngIf="myForm.get('address')?.errors?.['minlength']" class="error">Address must be at least 3 characters long.</div>
+        </div>
+      </div>
+    
+      <br>
+
+      <div>
+        <label for="email">Email<span class="required-asterisk">*</span>:</label>
+        <input id="email" formControlName="email" />
+        <div *ngIf="myForm.get('email')?.invalid && myForm.get('email')?.touched" class="error-message">
+          <div *ngIf="myForm.get('email')?.errors?.['required']" class="error">Email is required.</div>
+          <div *ngIf="myForm.get('email')?.errors?.['email']" class="error">Email must be a valid email address.</div>
+        </div>
+      </div>
+
+      <br>
+
+       <div>
+        <label for="phoneNumber">Phone Number<span class="required-asterisk">*</span>:</label>
+        <input id="phoneNumber" formControlName="phoneNumber" />
+        <div *ngIf="myForm.get('phoneNumber')?.invalid && myForm.get('phoneNumber')?.touched" class="error-message">
+          <div *ngIf="myForm.get('phoneNumber')?.errors?.['required']">Phone Number is required.</div>
+          <div *ngIf="myForm.get('phoneNumber')?.errors?.['pattern']">Phone Number is invalid.</div>
+        </div>
+      </div> 
+    
+      <br>
+     <div>
+        <label for="payment">Payment<span class="required-asterisk">*</span>:</label>
+        <label>
+          <input type="radio" formControlName="payment" value="COD" />
+          COD
+        </label>
+        <label>
+          <input type="radio" formControlName="payment" value="UPI" />
+          UPI
+        </label>
+        <label>
+          <input type="radio" formControlName="payment" value="Credit/Debit card" />
+          Credit/Debit card
+        </label>
+      </div> 
+      <button type="submit" [disabled]="myForm.invalid">Submit</button> 
+    </form>   
+
+</div>
+
+<div *ngIf="formData" class="container">
+  <h3>Submitted Data:</h3>
+  <p><strong>First Name:</strong> {{ formData.firstName }}</p>
+  <p><strong>Middle Name:</strong> {{ formData.middleName }}</p>
+  <p><strong>Last Name:</strong> {{ formData.lastName }}</p>
+  <p><strong>Address:</strong> {{ formData.address }}</p>
+  <p><strong>Email:</strong> {{ formData.email }}</p>
+  <p><strong>Phone Number:</strong> {{ formData.phoneNumber }}</p>
+  <p><strong>Payment:</strong> {{ formData.payment }}</p>
+</div>
+
+
