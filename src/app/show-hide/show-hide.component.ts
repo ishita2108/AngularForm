@@ -1,19 +1,17 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-show-hide',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './show-hide.component.html',
   styleUrl: './show-hide.component.css'
 })
 export class ShowHideComponent {
-  showValueString:string ="";
-  showValue(){
-    this.showValueString ="Hello, Welcome to Angular Training";
-  }
-  hideValue(){
-    this.showValueString ="";
+  showValueString : boolean = false;
+  showValue(action : string) : void{
+    this.showValueString = action === 'show';
   }
 
 }

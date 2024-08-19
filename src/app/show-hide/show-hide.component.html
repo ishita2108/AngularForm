@@ -1,8 +1,8 @@
 
 <div class="container">
     <p>show-hide works!</p>
-    <input type="button" value="Show" (click)="showValue()" />
-    <input type="button" value="Hide" (click)="hideValue()" />
-    <h1>{{ showValueString }}</h1>
+    <input type="button" value="Show" (click)="showValue('show')" />
+    <input type="button" value="Hide" (click)="showValue('hide')" />
+    <p *ngIf="showValueString">Hello, Welcome to Angular Training</p>
   </div>
   
